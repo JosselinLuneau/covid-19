@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/static/icon.svg"/>
+    <title>COVID-19</title>
+
+    <link rel="stylesheet" href="/css/styles.min.css">
+    <link rel="stylesheet" href="/static/css/Chart.min.css">
+
+    <script type="application/javascript" src="/static/js/Chart.min.js"></script>
+    <script type="application/javascript" src="/static/js/axios.min.js"></script>
+    <script type="application/javascript" src="/static/js/vue.min.js"></script>
+    <script type="application/javascript" src="/static/js/vue-resource.min.js"></script>
+    <script type="module" src="/app/scripts.min.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <nav>
+        <img class="icon icon-medium" src="/static/icon.svg" alt="Virus">
+        <ul id="navigation">
+            <li v-for="(item, index) in menu"
+                v-on:click="navigate(index)"
+                class="menu"
+                :class="{ selected: item.selected }"
+            >
+                <img class="icon icon-small" :src="item.img" alt="{{item.text}}">
+                <p>{{ item.text }}</p>
+            </li>
+        </ul>
+        <div id="reload" v-if="reload.active" class="menu" data-page="{{ pageDisplay }}">
+            <img class="icon icon-small" :src="reload.img" alt="reload">
+        </div>
+    </nav>
+
+    <div id="content">
+        <section v-for="(item) in menu"
+                 class="page"
+                 :class="{ displayed: item.selected }"
+        >
+            <transition name="fade">
+                <component :displayed="item.selected" :is="item.component"></component>
+            </transition>
+        </section>
+    </div>
+
+</div>
+
+</body>
+</html>
