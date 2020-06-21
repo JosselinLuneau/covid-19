@@ -1,0 +1,326 @@
+#page-table {
+  table {
+
+    %borderLight {
+      border: 1px solid rgb(185, 185, 185);
+    }
+
+    %bgLight {
+      background-color: $white;
+    }
+
+    %bgLightDark {
+      background-color: $purple;
+    }
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    @extend %bgLight;
+
+    thead {
+      tr {
+        th {
+          padding: 10px;
+          @extend %borderLight;
+          @extend %bgLightDark;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          width: 50%;
+          padding: 10px;
+
+          @extend %borderLight;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+        &:hover {
+          background-color: aliceblue;
+        }
+
+        background-color: #ffffff;
+
+        &:nth-child(even) {
+          @extend %bgLight;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .page-number {
+      width: 50px;
+      height: 50px;
+
+      margin-right: 15px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      border-radius: 10px;
+      @extend %boxShadow;
+
+      color: $purple;
+      font-size: 24px;
+      font-weight: bold;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      &:active, &:focus {
+        @extend %insetShadow;
+      }
+
+      &.middle {
+        position: relative;
+        top: -5px;
+
+        &:active, &:focus {
+          @extend %boxShadow;
+        }
+
+        .page-number-current {
+          width: 100%;
+          height: 100%;
+
+          background-color: $darkgray !important;
+          border-radius: 10px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .number {
+            color: $white;
+          }
+
+        }
+
+        //.pagination-dot {
+        //  width: 100%;
+        //  height: 100%;
+        //
+        //  background-color: $darkgray;
+        //  border-radius: 10px;
+        //
+        //  display: flex;
+        //  justify-content: center;
+        //  align-items: center;
+        //  .three-dot {
+        //    position: relative;
+        //
+        //    width: 12px;
+        //    height: 12px;
+        //
+        //    border-radius: 50%;
+        //    background-color: $white;
+        //
+        //    &:after, &:before {
+        //      position: absolute;
+        //      content: "";
+        //      display: inline-block;
+        //
+        //      width: 12px;
+        //      height: 12px;
+        //
+        //      border-radius: 50%;
+        //      background-color: $white
+        //    }
+        //
+        //    &:after {
+        //      right: -15px;
+        //    }
+        //
+        //    &:before {
+        //      left: -15px;
+        //    }
+        //  }
+      }
+    }
+
+  }
+}
+
+// popular classes
+.card-wrapper {
+  &.wrapper-inline {
+    display: flex;
+    flex-wrap: wrap;
+
+    .total {
+      width: 250px;
+      margin-right: 30px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.card {
+  border-radius: 5px;
+  @extend %boxShadow;
+
+  margin-bottom: 20px;
+
+  &.card-padding {
+    padding: 10px;
+  }
+}
+
+.icon {
+
+  &.icon-medium {
+    width: 64px;
+    height: 64px;
+  }
+
+  &.icon-small {
+    width: 36px;
+    height: 36px;
+  }
+
+  &.icon-big {
+    width: 128px;
+    height: 128px;
+  }
+
+}
+
+.number {
+  font-family: Museo Moderno, sans-serif;
+  color: $purple;
+}
+
+.date {
+  color: $lightred;
+}
+
+.paragraph {
+  color: $purple;
+
+  margin: {
+    top: 20px;
+    bottom: 20px;
+  };
+}
+
+.reload {
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  img {
+    padding: 10px;
+    width: calc(100% - 15px);
+    height: calc(100% - 15px);
+  }
+
+  &:hover {
+    img {
+      transition: 0.5s ease;
+      transform: rotateZ(-360deg);
+    }
+  }
+
+
+  &:active, &:focus {
+    @extend %insetShadow;
+    img {
+      transition: 0.5s ease;
+      transform: rotateZ(-360deg);
+    }
+  }
+}
+
+// use in dashboard and country detail
+.total {
+  position: relative;
+  width: 250px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .total-title {
+    font-weight: bold;
+  }
+
+  .progress {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+
+    height: auto;
+    width: auto;
+
+    .indicator {
+      width: 12px;
+      height: 12px;
+
+      margin-right: 10px;
+
+      &.negative {
+        transform: rotate(-90deg);
+      }
+
+      &.positive {
+        transform: rotate(90deg);
+      }
+    }
+
+  }
+}
+
+.deaths, .negative {
+  color: firebrick;
+}
+
+.recovered, .positive {
+  color: green;
+}
+
+.progression {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+}
+
+.chart-container {
+  height: 650px;
+
+  #seekChart {
+    height: 100% !important;
+  }
+}

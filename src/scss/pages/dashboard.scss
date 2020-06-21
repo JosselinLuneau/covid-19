@@ -1,0 +1,30 @@
+#dashboard {
+  #countries {
+    margin-top: 20px;
+    #dashboard-filter {
+      display: flex;
+
+      .search-bar {
+        width: 50%;
+        height: 50px;
+
+        font-size: 18px;
+
+        padding: 0px 10px;
+
+        border-radius: 10px;
+        @extend %insetShadow;
+
+        color: $darkgray;
+      }
+
+      .reload {
+        margin-left: 10px;
+
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+  }
+}

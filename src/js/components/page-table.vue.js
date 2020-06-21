@@ -32,8 +32,8 @@ Vue.component('page-table', {
                      class="page-number"
                     :class="{middle: null === pageNumber}">
                     
-                    <div v-if="null === pageNumber" class="pagination-dot">
-                        <span class="three-dot"></span>
+                    <div v-if="null === pageNumber" class="page-number-current">
+                        <span class="three-dot number">{{ displayCurrentPageNumber }}</span>
                     </div>
                     
                     <span v-if="pageNumber" class="number">{{ pageNumber }}</span>
@@ -108,7 +108,7 @@ Vue.component('page-table', {
         },
 
         previous: function () {
-            (this.currentPageNumber - 1) > 0 ? this.currentPageNumber-- : '';
+            (this.currentPageNumber - 1) >= 0 ? this.currentPageNumber-- : '';
         }
     },
     mounted() {

@@ -1,10 +1,11 @@
-const app = new Vue({
+new Vue({
     el: '#app',
     data: {
         pageDisplay: 'home',
         reload: {
             img: '/static/refresh.svg',
             active: false,
+            pages: ['dashboard']
         },
         menu: [
             {
@@ -23,7 +24,7 @@ const app = new Vue({
     },
     watch: {
         pageDisplay: function (current) {
-            this.reload.active = "dashboard" === current;
+            this.reload.active = this.reload.pages.includes(current);
         }
     },
     methods: {
@@ -36,6 +37,8 @@ const app = new Vue({
             const selectedMenu = this.menu[index];
             selectedMenu.selected = true;
             this.pageDisplay = selectedMenu.text.toLowerCase();
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     },
 

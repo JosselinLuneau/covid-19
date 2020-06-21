@@ -13,6 +13,7 @@ Vue.component('number', {
     `,
     methods: {
         formatNumber: function (value) {
+            value = Math.ceil(value)
             if (value) {
                 return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
             }

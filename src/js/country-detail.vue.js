@@ -11,7 +11,7 @@ Vue.component('country-detail', {
         <div id="detailByCountry">
             <div class="card card-padding" style="text-align: center">
                 <p style="font-size: 36px">{{this.live.Country}}</p>
-                <div v-on:click="close" id="detail-back-button" style="cursor: pointer;"><< Back</div>
+                <div v-on:click="close" id="detail-back-button" style="cursor: pointer;">< Back</div>
             </div>
             <div class="card-wrapper wrapper-inline">
                 <total title="Cas"

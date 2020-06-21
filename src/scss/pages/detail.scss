@@ -1,0 +1,18 @@
+#detailByCountry {
+  #detail-back-button {
+    margin-top: -35px;
+    float: left;
+
+    padding: 10px 5px;
+    border-radius: 10px;
+    background-color: $purple;
+    box-shadow: 5px 5px 16px 0 rgba(0, 0, 0, .2),
+    -8px -8px 24px 0 rgba(210, 210, 210, .5);
+    color: $white;
+
+    &:active, &:focus {
+      box-shadow: inset 4px 4px 10px 0 #61678c,
+      inset -4px -4px 10px 0 #838bbe;
+    }
+  }
+}

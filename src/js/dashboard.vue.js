@@ -11,7 +11,7 @@ Vue.component('dashboard-page', {
         }
     },
     template: `
-        <div id="dashboard">
+        <div id="dashboard" @reloadPage="reload()">
             <div v-if="!this.isCountryDetail">
                 <div class="card-wrapper wrapper-inline">
                     <total title="Cas"
@@ -34,7 +34,13 @@ Vue.component('dashboard-page', {
 
                 <div id="countries"
                      class="card card-padding">
-                    <input type="text" class="search-bar" @change="search" placeholder="Rechercher un pays"/>
+                    <div id="dashboard-filter">
+                        <input type="text" class="search-bar" @change="search" placeholder="Rechercher un pays"/>
+                        <div class="reload" @click="reload">
+                            <img src="/static/refresh.svg" alt="reload">
+                        </div>
+                    </div>
+
                     <page-table :header="['Pays', 'Cas', 'Morts', 'Soignés']"
                                 :data="this.displayedCountries"
                                 :number-per-page="14">
@@ -78,6 +84,10 @@ Vue.component('dashboard-page', {
         }
     },
     methods: {
+        reload: function() {
+            this.displayedCountries = this.countries;
+        },
+
         // ALl COUNTRIES DATA
         search: function (event) {
             this.displayedCountries = this.countries.filter(country => {
@@ -105,6 +115,7 @@ Vue.component('dashboard-page', {
 
         hideDetail: function () {
             this.detailedCountry = {}
+            this.reload()
         },
 
         showDetail: function (slug) {
@@ -117,5 +128,5 @@ Vue.component('dashboard-page', {
                     this.detailedCountry = res.data
                 }.bind(this))
         },
-    },
+    }
 })
