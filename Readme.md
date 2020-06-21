@@ -1,6 +1,6 @@
 # COVID 19 Website
 
-Here a minimalist interface to find all latest data throw this website. See world and each country progression of the virus named COVID-19.
+Here a minimalist interface to find all latest data. See world and each country progression of the virus named COVID-19.
 
 ## About
 
